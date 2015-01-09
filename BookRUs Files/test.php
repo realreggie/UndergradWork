@@ -1,7 +1,7 @@
 <?php
-$AWSAccessKeyId = "AKIAIFDEEMGP4H6COKHQ";
-$AWSSecretKey = "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";
-$TrackingID = "advwebdes03-20";
+$AWSAccessKeyId = "#";
+$AWSSecretKey = "#";
+$TrackingID = "#";
 $browseNodeID = "1000"; // HDTVs
  
 // no changes needed below this line 
