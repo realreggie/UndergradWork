@@ -1,11 +1,4 @@
 <?php
-/**
- *  Amazon Product API Library
- *
- *  @author Marc Littlemore
- *  @link 	http://www.marclittlemore.com
- *
- */ 
 
 class AmazonAPI
 {
