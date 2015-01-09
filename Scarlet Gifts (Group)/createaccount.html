@@ -1,0 +1,151 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>
+			Create Account
+		</title>
+		
+		<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="custom.css">
+		
+		<style type="text/css">
+		body{
+			background-image: url('http://studentweb.comminfo.rutgers.edu/class-2014-9-04-547-410-01/group3/create.jpg');
+			background-repeat: ;
+			color: white;
+			
+		}
+		
+			</style>
+		
+		<script type="text/javascript">
+			function validateForm()
+{
+ 
+   if( document.myForm.FirstName.value == "" )
+   {
+     alert( "Please provide your First name!" );
+     document.myForm.FirstName.focus() ;
+     return false;
+   }
+      if( document.myForm.LastName.value == "" )
+   {
+     alert( "Please provide your Last name!" );
+     document.myForm.LastName.focus() ;
+     return false;
+   }
+   var x = document.forms["myForm"]["Email"].value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        alert("Not a valid e-mail address");
+        return false;
+	} 
+   var y = document.forms["myForm"]["conemail"].value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        alert("Not a valid e-mail address");
+        return false;
+	}
+	var email = document.getElementById("Email").value;
+    var confemail = document.getElementById("confemail").value;
+	if(Email != conemail) {
+	alert('Emails do not match!');
+	return false;
+	}
+	if( document.myForm.Password.value == "" ){
+	 alert( "Please insert a password!" );
+	 document.myForm.Password.focus() ;
+	 return false;
+	 }   
+	if( document.myForm.conpassword.value == "" ){
+	 alert( "Please confirm your password!" );
+	 document.myForm.conpassword.focus() ;
+	 return false;
+	 }
+	var password = document.getElementById("Password").value;
+    var conpassword = document.getElementById("conpassword").value;
+
+	if(Password != conpassword) {
+	alert('Passwords do not match!');
+	}
+	
+}
+
+		</script> 
+		
+	</head>
+	
+	<body>
+				<div style="margin-top:2em; margin-bottom:5em;">
+			<div class="container create">
+				<div class="panel panel-default" style="margin:0 auto;width:500px">
+						<h1 class="text-center login-title">Create Account</h1>
+
+					<div class="panel-body">
+						<form name="myForm" onsubmit="return validateForm()"action="insertuser.php" method="post" class="form-horizontal" role="form">
+						  <div class="form-group">
+						    <label for="inputfname" class="col-lg-2 control-label" >First Name</label>
+						    <div class="col-lg-10">
+						      <input type="text" name="FirstName" class="form-control" id="FirstName" onkeyup="validate()" placeholder="First Name">
+						    </div>
+						  </div>
+						    <div class="form-group">
+						    <label for="inputlname" class="col-lg-2 control-label">Last Name</label>
+
+						    <div class="col-lg-10">
+						      <input type="text" name="LastName" class="form-control" id="LastName" placeholder="Last Name">
+						    </div>
+						  </div>
+						  
+						    <div class="form-group">
+						    <label for="inputemail" class="col-lg-2 control-label">Email</label>
+						    
+						    <div class="col-lg-10">
+						      <input type="text" name="Email" class="form-control" id="Email" placeholder="Email">
+						    </div>
+						  </div>
+						  
+							<div class="form-group">
+								<label for="inputEmail1" class="col-lg-2 control-label">Confirm Email</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="inputemail" name="conemail" placeholder="Your Email">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputSubject" class="col-lg-2 control-label">Password</label>
+								<div class="col-lg-10">
+									<input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputSubject" class="col-lg-2 control-label">Confirm Password</label>
+								<div class="col-lg-10">
+									<input type="password" class="form-control" id="conpassword" name="conpassword" placeholder="Confirm Password">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-lg-offset-2 col-lg-10">
+									<button type="submit" name="submit" id="newusersubmit" class="btn btn-lg btn-primary btn-block">
+										Submit
+									</button>
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div> <!-- End of Container-->
+		</div>
+	</body>
+</html>

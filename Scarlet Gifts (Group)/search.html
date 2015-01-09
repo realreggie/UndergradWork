@@ -1,0 +1,169 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>
+			Create Account
+		</title>
+		
+		<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="main.css">
+		
+
+		
+	</head>
+	
+	<body>
+	
+<script>                                           
+function validateForm ()                             /* Names function */
+{
+    var valid = true;                                /* Names variable valid and established default value of true. */
+    var msg="Incomplete form: \n";                   /* Names variable msg.  You can type anything in between the quotes.  \n means line break. */
+    if (allsearch.search.value == ""){               /* if statement where search value = nothing */
+        msg+="Please fill in a search term.\n";      /* Text to be added to msg when if statement is true */
+        valid = false;                               /* Changes valid to false when if statement is true */
+}
+    if (!valid) alert(msg);                   /* if statement that displays alert if valid is = to false */
+    return valid;                                  
+}
+</script>	
+	
+	
+<div id="social_media_bar">
+	<div id="icons">
+		<a href="https://www.facebook.com/pages/New-Jersey-Center-for-Civic-Ed/424051507739237" target="_blank">
+			<img src="icons/facebook.png" href="" width="30" height="30" /></a>
+	</div>
+		<div id="mailing_list">
+			<a href="" target="_blank">
+			<img src="icons/mailIcon.jpg" href="" width="27" height="27" /></a>
+		</div>		
+		
+		    <div id="search_bar">
+				<form name="allsearch" action="allsearch.php" onsubmit="return validateForm(search)" method="post">
+					<input type="text" name="search" autofocus maxlength="100" size="100">
+				</form>	
+			</div>
+			
+		<li><a href='.html'><span>Create Account</span></a></li>
+        
+        <li><a href=".html"><span>Login</span></a></li>
+                   
+</div>
+
+
+
+        <div id="header">
+            <div id="text_header"><center>
+               <img src="Banner2.jpg" href="" width="100%" height="auto"/></a> </center>
+            </div>
+        </div>
+
+		<div id="createcontent">
+            
+<div id="cssmenu">
+<ul>
+	<li><a href="index.html"><span>Home</span></a></li>
+    
+	<li><a href='.html'><span></span></a></li>
+							
+		<li>
+		<a href=".html"><span>Products</span></a>
+		</li>            
+    
+ 
+	<li>
+	<a href=".html"><span>Contact Us</span></a>
+	</li>
+
+                        
+             <li class='has-sub'><a href='primary.html'><span>Primary Sources</span></a>
+      <ul>
+     <!-- <li><a href='#'><span></span></a></li> -->
+      </ul>
+   </li>
+   
+   <li class='has-sub'><a href='#'><span>Other Resources</span></a>
+      <ul>
+      	<li><a href='mailing.html'><span>Join our mailing list</span></a></li>
+      	<li><a href='links.html'><span>Links</span></a></li>
+      	<li><a href='newsletters.html'><span>Newsletters</span></a></li>
+      	<li><a href='professionaldev.html'><span>Professional Development</span></a></li>
+        <li><a href='advocacy.html'><span>Advocacy</span></a></li>
+        <li><a href='constitutionday.html'><span>Constitution Day</span></a></li>
+        <li><a href='election_lesson.html'><span>Election Lesson</span></a></li>
+        <li><a href='files/9-11/Resources for teaching about September 11.pdf' target="_blank"><span>Resources for teaching about 9-11</span></a></li>
+      </ul>
+   </li>         
+       </ul>        
+</li>
+</ul>
+</div>
+
+
+<?php
+$startdate = $_POST['startdate'];
+$enddate = $_POST['enddate'];
+
+require_once 'login.php';
+$db_server = mysql_connect($db_hostname, $db_username, $db_password);
+if (!$db_server) die("Unable to connect to MySQL: ".mysql_error());
+mysql_select_db($db_database)  or die("Unable to select database: " . mysql_error());
+$query = "SELECT MerchantName, TransactionDate, TransactionTime, Sum(Price) FROM Merchant JOIN Transaction on Merchant.MerchantID = Transaction.MerchantID JOIN OrderTable on Transaction.TransactionID = OrderTable.TransactionID JOIN Product on OrderTable.ProductID = Product.ProductID WHERE TransactionDate >= '$startdate' and TransactionDate <= '$enddate' Group By OrderTable.TransactionID Order By TransactionDate Desc, MerchantName";
+
+$query2 = "SELECT Sum(Price) FROM Transaction JOIN OrderTable on Transaction.TransactionID = OrderTable.TransactionID JOIN Product on OrderTable.ProductID = Product.ProductID WHERE TransactionDate >= '$startdate' and TransactionDate <= '$enddate'";
+$result = mysql_query($query);
+if (!$result) die ("Database access failed: " . mysql_error());
+$rows = mysql_num_rows($result);
+$result2 = mysql_query($query2);
+if (!$result2) die ("Database access failed: " . mysql_error());
+$rows2 = mysql_num_rows($result2);
+
+echo "<table style='width:400px'>
+<tr>
+	<th>Merchant Name</th>
+	<th>Date</th>
+	<th>Time</th>
+	<th>Total</th>
+</tr>";
+
+for ($j = 0 ; $j < $rows ; ++$j){
+	$row = mysql_fetch_row($result);
+	
+	echo '<tr>';
+		echo '<td>' . $row[0] . '</td>';
+		echo '<td>' . $row[1] . '</td>';
+		echo '<td>' . $row[2] . '</td>';
+		echo '<td>' . $row[3] . '</td>';
+	echo '</tr>';
+}
+	
+for ($j = 0 ; $j < $rows2 ; ++$j){
+$row2 = mysql_fetch_row($result2);
+
+	echo '<tr>';
+		echo '<th id="total">Final Total: </th>';
+		echo '<th id="total">&nbsp;</th>';
+		echo '<th id="total">&nbsp;</th>';
+		echo '<th id="total">' . $row2[0] . '</th>';
+	echo '</tr>';
+	echo '</table>';
+}
+?>
+
+</div>			
+
+
+			<!-- End of Container-->
+		
+	</body>
+</html>

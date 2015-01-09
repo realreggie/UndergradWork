@@ -1,0 +1,51 @@
+<html>
+
+	<head>
+		<title>Search</title>
+		<style type="text/css">body { font-family: arial,sans-serif;} </style>
+	</head>
+	
+	<body>
+	
+	<h1>Search </h1>
+	
+		        <input type="text" class="form-control" id="searchform" name="searchform" placeholder="(Enter Food)">
+		                 <button class="btn btn-default" type="submit" id="submit">Submit</button>
+
+
+	<div id="results"></div>
+	<script>
+	
+	    $('#searchform').submit(function() {
+	        var searchterms = $("#searchterms").val();
+	        return false;
+	    });
+	
+	function getResultsFromYouTube (searchterms) {
+	    var apiKey = "dvx8XetpEWR1s0zjev3pe5TycVKymuL1";
+	        var titleKeyword = "lasagna";
+	        var url = "http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="+ searchterms + "&api_key="+apiKey;
+	
+	
+	        $.ajax({
+	            type: "GET",
+	            dataType: 'json',
+	            cache: false,
+	            url: url,
+	            success: function (data) {
+	                alert('success');
+	                console.log(data);
+	                 // Parse the  data:
+        var resultsString = "";
+        for (var i in data.Results){
+            console.log( data.Results[i] );
+            resultsString+= "<div>"+data.Results[i].Title+ " ("+data.Results[i].Cuisine+")</div>";
+        }
+        $("#results").html(resultsString);	            }
+	        });
+	    }
+
+	</script>
+	
+	</body>
+</html>

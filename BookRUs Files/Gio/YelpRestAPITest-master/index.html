@@ -1,0 +1,15 @@
+<html lang="en">
+<head>
+	<title>Yelp API test</title>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/hmac-sha1.js"></script>
+	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js"></script>
+	<script type="text/javascript" src="js/oauth-1.0a.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+	<h4>Enter what you want to search</h4>
+	Search:<input type="text" name="textbox"/>
+	<input type="button" value="submit" onclick="make_request('search')">
+	<div id="add_div"></div>
+</body>

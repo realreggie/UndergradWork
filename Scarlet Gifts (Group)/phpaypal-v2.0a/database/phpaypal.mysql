@@ -1,0 +1,26 @@
+# MySQL dump 8.9
+#
+# Host: localhost    Database: phpaypal
+#--------------------------------------------------------
+# Server version	3.23.24-beta
+
+
+#
+# Table structure for table 'products'
+#
+
+CREATE TABLE products (
+  id int(11) NOT NULL auto_increment,
+  item_name varchar(128) DEFAULT '' NOT NULL,
+  item_desc varchar(254) DEFAULT '' NOT NULL,
+  item_price decimal(10,2) DEFAULT '0' NOT NULL,
+  page_success varchar(254) DEFAULT '' NOT NULL,
+  page_cancel varchar(254) DEFAULT '' NOT NULL,
+  logo_location varchar(254) DEFAULT '' NOT NULL,
+  item_category varchar(128) DEFAULT '' NOT NULL,
+  image_large varchar(128) DEFAULT '' NOT NULL,
+  image_small varchar(128) DEFAULT '' NOT NULL,
+  status varchar(48) DEFAULT '' NOT NULL,
+  PRIMARY KEY (id)
+);
+

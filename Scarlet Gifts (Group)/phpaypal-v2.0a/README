@@ -1,0 +1,32 @@
+phpaypal v2.0-pre1 31 Dec 2001
+//  This free software is licensed under the terms of the
+//  GNU public license. A copy should be accompanying this script.
+//  Copyleft 2001 Mike Lynn <mike@mlynn.com>
+//  This work is merely an enhanced translation of the original work by paypal@superfreaker.com.
+//  I added some paging logic and converted the whole thing to php / mysql.
+//  Questions to mike@mlynn.com
+//  v2.0 Changes
+//  Added Administrative Interface to add products, etc.
+
+DESCRIPTION:
+phpaypal is a set of scripts that read from a database and display products with
+links to the PayPal service.  
+
+BACKGROUND:
+I found some asp code on the PayPal Developers Network - good stuff written by superfreaker.com.
+I wanted to use it but I don't speak ASP so I converted it to PHP.
+It didn't do paging the way I am used to so I gutted the paging and rewrote it. I hope you like.
+
+REQUIREMENTS:
+1. Apache
+2. PHP
+3. MYSQL
+4. A PayPal Account
+
+INSTALLATION:
+Read the INSTALL file in this directory.
+
+TODO:
+
+Clean the code!
+Add backend to receive updates from paypal and update a transaction table.

@@ -1,0 +1,5 @@
+[22-Aug-2012 09:16:33] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/campused/public_html/rusite/login/t/twitteroauth.php:249) in /home3/campused/public_html/rusite/login/t/twitteroauth.php on line 291
+[24-Aug-2012 13:19:15] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/campused/public_html/rusite/login/t/twitteroauth.php:301) in /home3/campused/public_html/rusite/login/t/login.php on line 82
+[24-Aug-2012 15:24:20] PHP Parse error:  syntax error, unexpected '.' in /home3/campused/public_html/rusite/login/t/twitteroauth.php on line 248
+[24-Aug-2012 15:25:01] PHP Parse error:  syntax error, unexpected '.' in /home3/campused/public_html/rusite/login/t/twitteroauth.php on line 248
+[24-Aug-2012 15:30:19] PHP Parse error:  syntax error, unexpected '.' in /home3/campused/public_html/rusite/login/t/twitteroauth.php on line 248

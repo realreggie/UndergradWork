@@ -1,0 +1,50 @@
+//  This free software is licensed under the terms of the
+//  GNU public license. A copy should be accompanying this script.
+//  Copyleft 2001 Mike Lynn <mike@mlynn.com>
+//  This work is merely an enhanced translation of the original work by paypal@superfreaker.com.
+//  I added some paging logic and converted the whole thing to php / mysql.
+//  Questions to mike@mlynn.com
+BACKGROUND:
+I found some asp code on the PayPal Developers Network - good stuff written by superfreaker.com.
+I wanted to use it but I don't speak ASP so I converted it to PHP.
+It didn't do paging the way I am used to so I gutted the paging and rewrote it. I hope you like.
+
+REQUIREMENTS:
+1. Apache
+2. PHP
+3. MYSQL
+4. A PayPal Account
+
+INSTALLATION:
+1. Untar the source in a directory that is under a web root
+  tar zxvf phpaypa-ver.tar.gz
+  This will create a directory like phpaypal-v1.0
+2 Link the version:
+ln -s phpaypal-v1.0 phpaypal
+  This will make it easier to get to.
+
+3. Create a Database.
+shell> mysqladmin create phpaypal
+
+4. Import the tables from the mysql dump - found in the database/ directory.
+shell> mysql < database/phpaypal.mysql 
+
+5. Create or copy your product images into the images directory.
+  There are columns in the database for large and small images.  This is
+  to accomodate thumbnail and detail images.
+
+6. Use phpMyAdmin to enter data into the database.
+ (I know - lame - I should have an admin routine to allow for this - 
+  maybe during my vacatation next week)
+  The index.php and detail.php programs look for images in the ./images
+  directory - so simply provide the names of the images in the database - 
+  no full path required.
+
+7. Modify the params in the includes/database.php file:
+
+$dbhost="localhost"; name of the host that has the database on it.
+$dbuser="<insert your mysql username here>";
+$dbpasswd="<insert your mysql password here>";
+$dbname="phpaypal"; #typically phpaypal
+
+8. Point your browser to the index.php file to test.
