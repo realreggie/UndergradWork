@@ -1,8 +1,0 @@
-#errors {
-    color: red;
-    white-space: pre-line;
-}
-
-#output .tweet .user {
-    font-weight: bold;
-}
